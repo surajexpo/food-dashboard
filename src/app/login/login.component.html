@@ -1,0 +1,73 @@
+<!-- <button class="btn btn-primary" (click)="openDialog()">Show Confirmation box</button>
+<button class="btn btn-primary" (click)="openAlert()">Show Alert box</button> -->
+<div class="bg-image">
+  <div
+    class="container h-100 d-flex justify-content-md-center align-itmes-center flex-column"
+  >
+    <div class="row mt-md-5">
+      <div class="col-md-6 m-auto ">
+        <img src="../../assets/images/Group16.png" alt="" class=" logo">
+      </div>
+      <div class="col-md-6">
+        <div class="login rounded p-sm-4">
+          <div class="text-center">
+            <h1 class="text-white">LOGIN</h1>
+          </div>
+          <form class="px-3" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <div class="text-center ms-3 f-label"><label>Phone</label></div>
+              <div class="text-fields px-3">
+                <input
+                  type="email"
+                  formControlName="email"
+                  name="email"
+                  required
+                />
+              </div>
+              <div *ngIf="getControl['email'].touched && getControl['email'].invalid" class="text-danger">
+              <div *ngIf="getControl['email'].errors?.['required']">Email is required.</div>
+              <div *ngIf="getControl['email'].errors?.['email']">invalid Email.</div>
+          </div>
+
+              <div>
+                <!-- <p class="text-danger">{{errorMsg}}</p> -->
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="text-center ms-3 f-label">
+                <label>PASSWORD</label>
+              </div>
+              <div class="text-fields px-3">
+                <input type="password" formControlName="password" required />
+              </div>
+              <div>
+                <div *ngIf="getControl['password'].touched && getControl['password'].invalid" class="text-danger">
+                    <div *ngIf="getControl['password'].errors?.['required']">Password is required.</div>
+                </div>
+                <!-- <p class="text-danger">{{errorMsg2}}</p> -->
+              </div>
+            </div>
+            <!-- <div class="mb-3 text-end">
+                            <a class="terms" routerLink="/forgot">Forgot Password?</a>
+                        </div> -->
+            <div class="mb-3">
+              <button
+                type="submit"
+                class="log-in"
+              >
+                LOG IN
+              </button>
+              <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading> -->
+            </div>
+            <div class="mb-3 text-center">
+              <!-- <label for="in-check" class="me-1">Not registered yet?</label><a routerLink="/sign-up"
+                                class="terms">Create an
+                                Account</a> -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

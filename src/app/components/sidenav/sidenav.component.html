@@ -1,0 +1,27 @@
+<mat-nav-list>
+  <div class="logo ">
+    <!-- <img src="./assets/images/logo.svg" alt="I-Exam" /> -->
+    <span class="text-white">Food Delevery</span>
+  </div>
+  <mat-divider></mat-divider>
+  <h2 matSubheader class="mt-2">APPLICATIONS</h2>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard">
+    <mat-icon class="ms-2">home</mat-icon> Deshboard
+  </a>
+  <a mat-list-item routerLink="/dashboard/categories"><mat-icon class="ms-2">arrow_right_alt  </mat-icon>Food Categories</a>
+  <!-- <mat-accordion>
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <a mat-list-item>
+          <mat-icon> arrow_right_alt</mat-icon>Orders
+        </a>
+      </mat-expansion-panel-header>
+      <a mat-list-item> <mat-icon> chevron_right </mat-icon>Delivered Orders</a>
+      <a mat-list-item> <mat-icon> chevron_right </mat-icon>Pending Orders</a>
+    </mat-expansion-panel>
+  </mat-accordion>  -->
+  <a mat-list-item ><mat-icon class="ms-2">arrow_right_alt  </mat-icon>Coupons</a>
+</mat-nav-list>

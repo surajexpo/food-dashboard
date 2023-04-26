@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="text-center">
+    <h2>Categories</h2>
+  </div>
+  <div class="text-end">
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#addSubject" (click)="openAdd()"
+    >
+      Add Categories
+    </button>
+  </div>
+  <div class="row border-bottom">
+    <div class="col-1"><h3>S.NO.</h3></div>
+    <div class="col-3"><h3>Name</h3></div>
+    <div class="col-3"><h3>Sub-Categories</h3></div>
+    <div class="col-5"><h3>Action</h3></div>
+  </div>
+  <div class="row border-bottom" *ngFor="let item of pageSlice;let i=index">
+    <div class="col-1"><h5>{{i+1}}</h5></div>
+    <div class="col-3">
+      <Strong>
+       {{item.name}}</Strong
+      >
+    </div>
+    <div class="col-3">
+      <p>
+       <a class="btn-link btn" (click)="setSubject(item)"> View</a>
+      </p>
+    </div>
+    <div class="col-5">
+      <!-- <button mat-raised-button (click)="openDialog('0ms', '0ms')">Open dialog</button> -->
+      <a  class="btn-link btn" (click)="deleteSubject(item._id)">Delete</a>/ 
+      <a  class="btn-link btn" (click)="editSubject(i)"   data-bs-toggle="modal"
+      data-bs-target="#addSubject" >Edit</a>
+    </div>
+  </div>
+  <mat-paginator
+    (page)="handlePageEvent($event)"
+    [length]="subjectData.length"
+    [pageSize]="pageSize"
+    [showFirstLastButtons]="showFirstLastButtons"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="pageIndex"
+    aria-label="Select page">
+</mat-paginator>
+ 
+</div>
+<!--add subject Modal -->
+<div
+  class="modal fade"
+  id="addSubject"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          <span *ngIf="OperationName=='Add'">Add</span> <span *ngIf="OperationName=='Edit'">Edit</span>
+          Subject
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addSubjectForm" (ngSubmit)="addSubject()">
+          <div class="mb-3">
+            <label for="title" class="form-label">Subject</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              aria-describedby="emailHelp"
+              formControlName="name"
+            />
+          </div>
+          <div *ngIf="getControl['name'].touched && getControl['name'].invalid" class="text-danger">
+            <div *ngIf="getControl['name'].errors?.['required']">Name is required.</div>
+        </div>
+          <button type="submit"   *ngIf="OperationName == 'Add'"  data-bs-dismiss="modal" class="btn btn-primary">Add</button>
+          <button type="button"  *ngIf="OperationName == 'Edit'"  data-bs-dismiss="modal" (click)="updateSubject()" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+      <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+    </div>
+  </div>
+</div>

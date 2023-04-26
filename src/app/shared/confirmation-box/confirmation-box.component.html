@@ -1,0 +1,7 @@
+  <div mat-dailog-content>
+    {{message}}
+  </div>
+  <mat-dialog-actions align="center">
+    <button class="btn m-2 btn-primary" (click)="onConfirmClick(true)">{{confirmButtonText}}</button>
+    <button (click)="onConfirmClick(false)" class="btn m-2 btn-primary">{{cancelButtonText}}</button>
+  </mat-dialog-actions>

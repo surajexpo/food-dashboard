@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row mt-3 px-4">
+    <div class="col-3">
+      <div class="box text-center py-2 rounded">
+        <p>Users : 200</p>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="box text-center py-2 rounded">
+        <p>Categories : 6</p>
+      </div>
+    </div>
+    <div class="col-3">
+        <div class="box text-center py-2 rounded">
+            <p>Sub-Categories : 30</p>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="box text-center py-2 rounded">
+            <p>Products : 230</p>
+        </div>
+      </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <canvas
+        baseChart
+        [type]="'pie'"
+        [datasets]="pieChartDatasets"
+        [labels]="pieChartLabels"
+        [options]="pieChartOptions"
+        [plugins]="pieChartPlugins"
+        [legend]="pieChartLegend"
+      >
+      </canvas>
+    </div>
+    <div class="col-md-6">
+      <div style="display: block">
+        <canvas
+          baseChart
+          width="400"
+          height="400"
+          [type]="'line'"
+          [data]="lineChartData"
+          [options]="lineChartOptions"
+          [legend]="lineChartLegend"
+        >
+        </canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3 px-4">
+    <canvas
+      baseChart
+      [data]="barChartData"
+      [options]="barChartOptions"
+      [plugins]="barChartPlugins"
+      [legend]="barChartLegend"
+      [type]="'bar'"
+    >
+    </canvas>
+  </div>
+</div>
