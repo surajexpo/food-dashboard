@@ -22,13 +22,13 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
 import { CategoriesComponent } from './components/categories/categories.component';
-import {HeadingComponent } from './components/categories/heading/heading.component'
+import {SubcateComponent } from './components/categories/sub-cate/sub-cate.component'
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthtokenService } from './services/authtoken/authtoken.service';
 import { ConfirmationBoxComponent } from './shared/confirmation-box/confirmation-box.component';
 import { AlertComponent } from './shared/alert/alert.component';
-import { GkquestionComponent } from './components/categories/heading/gkquestion/gkquestion.component';
+import { GkquestionComponent } from './components/categories/sub-cate/gkquestion/gkquestion.component';
 import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
@@ -40,7 +40,7 @@ import { NgChartsModule } from 'ng2-charts';
     DashboardComponent,
     LoginComponent,
     CategoriesComponent,
-    HeadingComponent,
+    SubcateComponent,
     ConfirmationBoxComponent,
     AlertComponent,
     GkquestionComponent,

@@ -30,8 +30,31 @@ export class CategoriesComponent implements OnInit {
   pageIndex = 0;
   pageSizeOptions = [5, 10, 25];
   showFirstLastButtons = true;
-  subjectData: any = [];
-  pageSlice: any = [];
+  subjectData: any = [
+    {
+      name:'Fruit and vegetables',
+     
+    },
+    {
+      name:'Starchy food',
+     
+    },
+    {
+      name:'Dairy',
+     
+    },
+    {
+      name:'Fat',
+     
+    },
+    {
+      name:'Protein',
+     
+    },
+  ];
+  pageSlice: any = [
+   
+  ];
   handlePageEvent(event: PageEvent) {
     console.log(event);
     const startIndex = event.pageIndex * event.pageSize;
@@ -44,7 +67,6 @@ export class CategoriesComponent implements OnInit {
     }
     this.pageSlice = this.subjectData.slice(startIndex, endIndex);
   }
-  OperationName: string = '';
   currentIndex: number = 0;
   addSubjectForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -53,13 +75,15 @@ export class CategoriesComponent implements OnInit {
     return this.addSubjectForm.controls;
   }
   getAllSubjects() {
-    this.subService.getAllSubject().subscribe((result: any) => {
-      console.log(result);
-      result.forEach(() => {
-        this.subjectData = result;
-        this.pageSlice = this.subjectData.slice(0, 10);
-      });
-    });
+
+    this.pageSlice = this.subjectData.slice(0, 10);
+    // this.subService.getAllSubject().subscribe((result: any) => {
+    //   console.log(result);
+    //   result.forEach(() => {
+    //     this.subjectData = result;
+    //     this.pageSlice = this.subjectData.slice(0, 10);
+    //   });
+    // });
   }
   addSubject() {
     const data = this.addSubjectForm.value;
@@ -84,9 +108,7 @@ export class CategoriesComponent implements OnInit {
       },
     });
   }
-  openAdd() {
-    this.OperationName = 'Add';
-  }
+
   deleteSubject(id: string) {
     this.popup
       .confimation('Are You Sure You Want to Delete This?', 'Ok', 'Cancel')
@@ -110,7 +132,7 @@ export class CategoriesComponent implements OnInit {
     });
   }
   editSubject(index: number) {
-    this.OperationName = 'Edit';
+   
     this.currentIndex = index;
     this.addSubjectForm.controls['name'].setValue(this.subjectData[index].name);
   }

@@ -1,32 +1,24 @@
 <div class="container">
-  <a routerLink="/dashboard/gk">Back</a>
+  <a routerLink="/dashboard/categories" class="btn-link">Back</a>
   <div class="text-center">
-    <h2>Headings</h2>
+    <h2>Sub-Categories</h2>
   </div>
-  <!-- <div class="text-end my-3">
-    <button
-      type="button"
-      class="btn btn-primary"
-      data-bs-toggle="modal"
-      data-bs-target="#addHeading">
-      Add Heading
-    </button>
-  </div> -->
-  <div class="text-start"> <h5>Subject : {{subjectData.name}}</h5></div>
+  
+  <div class="text-start"> <h5>Category : Dairy</h5></div>
   <div class="text-end">
     <button
       type="button"
-      class="btn btn-primary"
+      class="btn food-btn"
       data-bs-toggle="modal"
       data-bs-target="#addHeading"
     >
-      Add Heading
+      Add Sub-Category
     </button>
   </div>
   <div class="row border-bottom">
     <div class="col-1"><h3>S.NO.</h3></div>
     <div class="col-3"><h3>Name</h3></div>
-    <div class="col-3"><h3>Questions</h3></div>
+    <div class="col-3"><h3>Products</h3></div>
     <div class="col-5"><h3>Action</h3></div>
   </div>
   <div class="row border-bottom" *ngFor="let item of pageSlice; let i = index">
@@ -38,7 +30,7 @@
     </div>
     <div class="col-3">
       <p>
-        <a class="btn-link btn" (click)="passHeadingData(item)"> View</a>
+        <a class="btn-link btn" > View</a>
       </p>
     </div>
     <div class="col-5">
@@ -74,7 +66,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Question</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Sub-Category</h1>
         <button
           type="button"
           class="btn-close"
@@ -85,7 +77,7 @@
       <div class="modal-body">
         <form [formGroup]="addHeadingForm" (ngSubmit)="addHeading()">
           <div class="mb-3">
-            <label for="title" class="form-label">Heading</label>
+            <label for="title" class="form-label">Sub-Category</label>
             <input
               type="text"
               class="form-control"
@@ -126,7 +118,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Heading</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Sub-Category</h1>
         <button
           type="button"
           class="btn-close"
@@ -137,7 +129,7 @@
       <div class="modal-body">
         <form [formGroup]="addHeadingForm" (ngSubmit)="updateHeading()">
           <div class="mb-3">
-            <label for="title" class="form-label">Heading</label>
+            <label for="title" class="form-label">Sub-Category</label>
             <input
               type="text"
               class="form-control"

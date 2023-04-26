@@ -1,18 +1,18 @@
-import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
-import { HeadingService } from 'src/app/services/gk/heading.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Shared } from 'src/app/services/gk/shared.service';
-import { PageEvent } from '@angular/material/paginator';
-import { subject, heading } from '../../../models/gk/gk';
-import { PopUpService } from 'src/app/services/popup/pop-up.service';
-import { Router, TitleStrategy } from '@angular/router';
+import { AfterViewInit, Component, ViewChild, OnInit } from "@angular/core";
+import { HeadingService } from "src/app/services/gk/heading.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Shared } from "src/app/services/gk/shared.service";
+import { PageEvent } from "@angular/material/paginator";
+import { subject, heading } from "../../../models/gk/gk";
+import { PopUpService } from "src/app/services/popup/pop-up.service";
+import { Router, TitleStrategy } from "@angular/router";
 @Component({
-  selector: 'app-heading',
-  templateUrl: './heading.component.html',
-  styleUrls: ['./heading.component.scss'],
+  selector: "app-heading",
+  templateUrl: "./sub-cate.component.html",
+  styleUrls: ["./sub-cate.component.scss"],
 })
-export class HeadingComponent implements OnInit {
+export class SubcateComponent implements OnInit {
   constructor(
     private headingService: HeadingService,
     private snack: MatSnackBar,
@@ -24,19 +24,37 @@ export class HeadingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   this.getSubjectData();
+    this.getSubjectData();
   }
   subjectData!: subject;
-  sId: string = '';
-  currentId: string = '';
+  sId: string = "";
+  currentId: string = "";
   // Pagination
   length = 0;
   pageSize = 10;
   pageIndex = 0;
   pageSizeOptions = [5, 10, 25];
   showFirstLastButtons = true;
-  headingData: heading[] = [];
-  pageSlice: heading[] = [];
+  // headingData: heading[] = [];
+  headingData: any = [
+    {
+      name: "Milk",
+    },
+    {
+      name: "Butter",
+    },
+    {
+      name: "Ice-Cream",
+    },
+    {
+      name: "Cheese",
+    },
+    {
+      name: "Coffee",
+    },
+    
+  ];
+  pageSlice: any=[];
   handlePageEvent(event: PageEvent) {
     console.log(event);
     const startIndex = event.pageIndex * event.pageSize;
@@ -51,33 +69,34 @@ export class HeadingComponent implements OnInit {
   }
 
   addHeadingForm = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    sId: new FormControl('', [Validators.required]),
+    name: new FormControl("", [Validators.required]),
+    sId: new FormControl("", [Validators.required]),
   });
   get getControl() {
     return this.addHeadingForm.controls;
   }
-  getSubjectData(){
+  getSubjectData() {
     if (!this.subjectData) {
-      console.log('id nnhi mili');
+      console.log("id nnhi mili");
     } else {
       this.sId = this.subjectData._id;
       this.getAllHeading();
     }
   }
   getAllHeading() {
-    this.headingService
-      .getAllHeading({ sId: this.sId })
-      .subscribe((result: any) => {
-        console.log('Heading data ', result);
-        result.forEach(() => {
-          this.headingData = result;
-          this.pageSlice = this.headingData.slice(0, 10);
-        });
-      });
+    this.pageSlice = this.headingData.slice(0, 10);
+    // this.headingService
+    //   .getAllHeading({ sId: this.sId })
+    //   .subscribe((result: any) => {
+    //     console.log("Heading data ", result);
+    //     result.forEach(() => {
+    //       this.headingData = result;
+    //       this.pageSlice = this.headingData.slice(0, 10);
+    //     });
+    //   });
   }
   addHeading() {
-    this.addHeadingForm.controls['sId'].setValue(this.sId);
+    this.addHeadingForm.controls["sId"].setValue(this.sId);
     console.log(this.addHeadingForm.value);
     this.headingService
       .addHeading(this.addHeadingForm.value)
@@ -90,14 +109,14 @@ export class HeadingComponent implements OnInit {
 
   deleteHeading(id: string) {
     this.popup
-      .confimation('Are You Sure You Want to Delete This?', 'Ok', 'Cancel')
+      .confimation("Are You Sure You Want to Delete This?", "Ok", "Cancel")
       .subscribe((res: any) => {
         if (res) {
           this.headingService.deleteHeading(id).subscribe((response) => {
             console.log(response);
-            this.snack.open('Heading has been deleted', 'ok', {
-              horizontalPosition: 'right',
-              verticalPosition: 'top',
+            this.snack.open("Heading has been deleted", "ok", {
+              horizontalPosition: "right",
+              verticalPosition: "top",
               duration: 2000,
             });
             this.getAllHeading();
@@ -108,8 +127,8 @@ export class HeadingComponent implements OnInit {
   editHeading(index: number, id: string) {
     const data = this.headingData[index];
     console.log(data);
-    this.addHeadingForm.controls['name'].setValue(data.name);
-    this.addHeadingForm.controls['sId'].setValue(this.sId);
+    this.addHeadingForm.controls["name"].setValue(data.name);
+    this.addHeadingForm.controls["sId"].setValue(this.sId);
     this.currentId = id;
     console.log(this.addHeadingForm.value);
   }
@@ -118,9 +137,9 @@ export class HeadingComponent implements OnInit {
       .updateHeading(this.currentId, this.addHeadingForm.value)
       .subscribe((result) => {
         console.log(result);
-        this.snack.open('Heading has been updated', 'ok', {
-          horizontalPosition: 'right',
-          verticalPosition: 'top',
+        this.snack.open("Heading has been updated", "ok", {
+          horizontalPosition: "right",
+          verticalPosition: "top",
           duration: 2000,
         });
         this.getAllHeading();
@@ -134,6 +153,6 @@ export class HeadingComponent implements OnInit {
       subjectName: this.subjectData.name,
     };
     this.shared.setHeading(toPassData);
-    this.router.navigate(['/dashboard/gkquestion']);
+    this.router.navigate(["/dashboard/gkquestion"]);
   }
 }
