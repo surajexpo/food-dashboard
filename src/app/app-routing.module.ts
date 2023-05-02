@@ -8,7 +8,8 @@ import { HomeComponent } from './components/home/home.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { GkquestionComponent } from './components/categories/sub-cate/gkquestion/gkquestion.component';
+import { ProductComponent } from './components/categories/sub-cate/product/product.component';
+import { CouponComponent } from './components/coupon/coupon.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -30,8 +31,12 @@ const routes: Routes = [
         component: SubcateComponent,
       },
       {
-        path: 'gkquestion',
-        component: GkquestionComponent,
+        path: 'product',
+        component: ProductComponent,
+      },
+      {
+        path: 'coupon',
+        component: CouponComponent,
       },
 
      

@@ -1,7 +1,7 @@
 <div class="container">
-  <a routerLink="/dashboard/heading">Back</a>
+  <a routerLink="/dashboard/subcate">Back</a>
   <div class="text-center">
-    <h2>GK Questions</h2>
+    <h2>Products</h2>
   </div>
   <div class="text-end my-3">
     <button
@@ -10,12 +10,12 @@
       data-bs-toggle="modal"
       data-bs-target="#addQuestion"
     >
-      Add Question
+      Add Product
     </button>
   </div>
   <div class="my-3">
-    <h5>Subject  : {{heading.subjectName}}</h5>
-    <h5>Heading : {{heading.name}}</h5>
+    <h5>Categories  : Dairy</h5>
+    <h5>Sub-Categories : Milk</h5>
   </div>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="questions">
@@ -26,11 +26,11 @@
       </ng-container>
 
       <ng-container matColumnDef="question">
-        <th mat-header-cell *matHeaderCellDef>Questions</th>
+        <th mat-header-cell *matHeaderCellDef>Product</th>
         <td mat-cell *matCellDef="let element">{{ element.question }}</td>
       </ng-container>
       <ng-container matColumnDef="answer">
-        <th mat-header-cell *matHeaderCellDef>Answer</th>
+        <th mat-header-cell *matHeaderCellDef>Price</th>
         <td mat-cell *matCellDef="let element">{{ element.answer }}</td>
       </ng-container>
       <ng-container matColumnDef="action">
@@ -73,7 +73,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Question</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
         <button
           type="button"
           class="btn-close"
@@ -84,7 +84,7 @@
       <div class="modal-body">
         <form [formGroup]="questionForm" (ngSubmit)="addQuestion()">
           <div class="mb-3">
-            <label for="title" class="form-label">Question</label>
+            <label for="title" class="form-label">Product</label>
             <input
               type="text"
               class="form-control"
@@ -100,11 +100,11 @@
             class="text-danger"
           >
             <div *ngIf="getControl['question'].errors?.['required']">
-              Question is required.
+              Product is required.
             </div>
           </div>
           <div class="mb-3">
-            <label for="title" class="form-label">Answer</label>
+            <label for="title" class="form-label">Price</label>
             <input
               type="text"
               class="form-control"
@@ -120,7 +120,7 @@
             class="text-danger"
           >
             <div *ngIf="getControl['answer'].errors?.['required']">
-              Answer is required.
+              Price is required.
             </div>
           </div>
 
@@ -144,7 +144,7 @@
 <!--add news Modal -->
 <div
   class="modal fade"
-  id="editQuestion"
+  id="dsf"
   tabindex="-1"
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"

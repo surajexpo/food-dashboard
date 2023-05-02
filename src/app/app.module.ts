@@ -28,8 +28,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthtokenService } from './services/authtoken/authtoken.service';
 import { ConfirmationBoxComponent } from './shared/confirmation-box/confirmation-box.component';
 import { AlertComponent } from './shared/alert/alert.component';
-import { GkquestionComponent } from './components/categories/sub-cate/gkquestion/gkquestion.component';
+import { ProductComponent } from './components/categories/sub-cate/product/product.component';
 import { NgChartsModule } from 'ng2-charts';
+import { CouponComponent } from './components/coupon/coupon.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { NgChartsModule } from 'ng2-charts';
     SubcateComponent,
     ConfirmationBoxComponent,
     AlertComponent,
-    GkquestionComponent,
+    ProductComponent,
+    CouponComponent,
   ],
   imports: [
     HttpClientModule,
