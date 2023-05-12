@@ -1,40 +1,67 @@
 <div class="container">
-  <div class="text-center mt-3">
-    <h2>Categories</h2>
+  <div class="header">
+    <div class="row g-2">
+      <div class="col-2">
+        <h4 class="textcolor">CATEGORIES</h4>
+      </div>
+      <div class="col-2">
+        <button
+          type="button"
+          class="btn food-btn"
+        
+        >
+          ADD CATEGORY
+        </button>
+      </div>
+      <div class="col-3 ms-auto">
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn food-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+      </div>
+    </div>
   </div>
-  <div class="text-end">
-    <button
-      type="button"
-      class="btn food-btn"
-      data-bs-toggle="modal"
-      data-bs-target="#addCate" 
-    >
-      Add Category
-    </button>
+
+<div class="tabledata">
+  <div class="row justify-content-start align-items-center">
+    <div class="col-1"><p class="textcolor">S.NO.</p></div>
+    <div class="col-2"><p class="textcolor">IMAGE</p></div>
+    <div class="col-3"><p class="textcolor">NAME</p></div>
+    <div class="col-3"><p class="textcolor">SUB-CATEGORIES</p></div>
+    <div class="col-3"><p class="textcolor">ACTION</p></div>
   </div>
-  <div class="row border-bottom">
-    <div class="col-1"><h3>S.NO.</h3></div>
-    <div class="col-3"><h3>Name</h3></div>
-    <div class="col-3"><h3>Sub-Categories</h3></div>
-    <div class="col-5"><h3>Action</h3></div>
-  </div>
-  <div class="row border-bottom" *ngFor="let item of pageSlice;let i=index">
-    <div class="col-1"><h5>{{i+1}}</h5></div>
-    <div class="col-3">
-      <Strong>
-       {{item.name}}</Strong
-      >
+  <div class="row justify-content-start align-items-center" *ngFor="let item of pageSlice; let i = index">
+    <div class="col-1">
+      <span>{{ i + 1 }}</span>
+    </div>
+    <div class="col-2">
+     
+      <img [src]="item.img" class="images" alt="">
+  
     </div>
     <div class="col-3">
-      <p>
-       <a class="btn-link btn" routerLink="/dashboard/subcate"> View</a>
-      </p>
+      <span>{{ item.name }}</span>
     </div>
-    <div class="col-5">
+    <div class="col-3">
+    
+        <a class="links" routerLink="/dashboard/subcate"> View</a>
+     
+    </div>
+    <div class="col-3">
       <!-- <button mat-raised-button (click)="openDialog('0ms', '0ms')">Open dialog</button> -->
-      <a  class="btn-link btn" (click)="deleteSubject(item._id)">Delete</a>/ 
-      <a  class="btn-link btn" (click)="editSubject(i)"   data-bs-toggle="modal"
-      data-bs-target="#addSubject" >Edit</a>
+      <a class="links" (click)="deleteSubject(item._id)">Delete</a>/
+      <a
+      class="links"
+        (click)="editSubject(i)"
+        data-bs-toggle="modal"
+        data-bs-target="#addSubject"
+        >Edit</a
+      >
     </div>
   </div>
   <mat-paginator
@@ -44,9 +71,10 @@
     [showFirstLastButtons]="showFirstLastButtons"
     [pageSizeOptions]="pageSizeOptions"
     [pageIndex]="pageIndex"
-    aria-label="Select page">
-</mat-paginator>
- 
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>
 </div>
 <!--add subject Modal -->
 <div
@@ -59,10 +87,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">
-          Add
-          Categories
-        </h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Categories</h1>
         <button
           type="button"
           class="btn-close"
@@ -82,10 +107,17 @@
               formControlName="name"
             />
           </div>
-          <div *ngIf="getControl['name'].touched && getControl['name'].invalid" class="text-danger">
-            <div *ngIf="getControl['name'].errors?.['required']">Name is required.</div>
-        </div>
-          <button type="submit"    data-bs-dismiss="modal" class="btn btn-primary">Add</button>
+          <div
+            *ngIf="getControl['name'].touched && getControl['name'].invalid"
+            class="text-danger"
+          >
+            <div *ngIf="getControl['name'].errors?.['required']">
+              Name is required.
+            </div>
+          </div>
+          <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">
+            Add
+          </button>
         </form>
       </div>
       <!-- <div class="modal-footer">

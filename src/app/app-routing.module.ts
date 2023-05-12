@@ -10,6 +10,9 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProductComponent } from './components/categories/sub-cate/product/product.component';
 import { CouponComponent } from './components/coupon/coupon.component';
+import { OrderComponent } from './components/order/order.component';
+import { CustomerListComponent } from './components/customer-list/customer-list.component';
+import { VenderListComponent } from './components/vender-list/vender-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -37,6 +40,18 @@ const routes: Routes = [
       {
         path: 'coupon',
         component: CouponComponent,
+      },
+      {
+        path: 'order',
+        component: OrderComponent,
+      },
+      {
+        path: 'vender-list',
+        component: VenderListComponent,
+      },
+      {
+        path: 'customer-list',
+        component: CustomerListComponent,
       },
 
      

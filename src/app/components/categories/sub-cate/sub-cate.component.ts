@@ -20,13 +20,44 @@ export class SubcateComponent implements OnInit {
     private popup: PopUpService,
     private router: Router
   ) {
-    this.subjectData = this.shared.getSubject();
+    // this.subjectData = this.shared.getSubject();
   }
 
   ngOnInit(): void {
     this.getSubjectData();
   }
-  subjectData!: subject;
+  // subjectData!: subject;
+  headingData: any = [
+    {
+      name: "Milk",
+      img: "../../../../assets/images/milk.jpeg",
+    },
+    {
+      name: "Butter",
+      img: "../../../../assets/images/butter.jpeg",
+    },
+    {
+      name: "Cream",
+
+      img: "../../../../assets/images/cream.jpeg",
+    },
+    {
+      name: "Fermented",
+      img: "../../../../assets/images/fermented.jpeg",
+    },
+    {
+      name: "Yogurt",
+      img: "../../../../assets/images/yogurt.jpeg",
+    },
+    {
+      name: "Cheese",
+      img: "../../../../assets/images/cheese.jpeg",
+    },
+    {
+      name: "Custard",
+      img: "../../../../assets/images/custard.jpeg",
+    },
+  ];
   sId: string = "";
   currentId: string = "";
   // Pagination
@@ -36,25 +67,7 @@ export class SubcateComponent implements OnInit {
   pageSizeOptions = [5, 10, 25];
   showFirstLastButtons = true;
   // headingData: heading[] = [];
-  headingData: any = [
-    {
-      name: "Milk",
-    },
-    {
-      name: "Butter",
-    },
-    {
-      name: "Ice-Cream",
-    },
-    {
-      name: "Cheese",
-    },
-    {
-      name: "Coffee",
-    },
-    
-  ];
-  pageSlice: any=[];
+  pageSlice: any = [];
   handlePageEvent(event: PageEvent) {
     console.log(event);
     const startIndex = event.pageIndex * event.pageSize;
@@ -76,12 +89,13 @@ export class SubcateComponent implements OnInit {
     return this.addHeadingForm.controls;
   }
   getSubjectData() {
-    if (!this.subjectData) {
-      console.log("id nnhi mili");
-    } else {
-      this.sId = this.subjectData._id;
-      this.getAllHeading();
-    }
+    // if (!this.subjectData) {
+    //   console.log("id nnhi mili");
+    // } else {
+    //   this.sId = this.subjectData._id;
+    //   this.getAllHeading();
+    // }
+    this.getAllHeading();
   }
   getAllHeading() {
     this.pageSlice = this.headingData.slice(0, 10);
@@ -146,13 +160,13 @@ export class SubcateComponent implements OnInit {
       });
   }
   passHeadingData(data: heading) {
-    const toPassData: any = {
-      name: data.name,
-      sId: data.sId,
-      _id: data._id,
-      subjectName: this.subjectData.name,
-    };
-    this.shared.setHeading(toPassData);
-    this.router.navigate(["/dashboard/gkquestion"]);
+    // const toPassData: any = {
+    //   name: data.name,
+    //   sId: data.sId,
+    //   _id: data._id,
+    //   subjectName: this.subjectData.name,
+    // };
+    // this.shared.setHeading(toPassData);
+    // this.router.navigate(["/dashboard/gkquestion"]);
   }
 }

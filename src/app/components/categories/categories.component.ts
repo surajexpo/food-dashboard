@@ -32,23 +32,31 @@ export class CategoriesComponent implements OnInit {
   showFirstLastButtons = true;
   subjectData: any = [
     {
-      name:'Fruit and vegetables',
+      name:'Fruits',
+      img:'../../../assets/images/fruits.jpeg'
+
      
     },
     {
-      name:'Starchy food',
+      name:'Vegetables',
+      img:'../../../assets/images//vegetable.jpeg'
+     
+    },
+    {
+      name:'Grains',
+
+      img:'../../../assets/images//grains.jpeg'
+     
+    },
+    {
+      name:'Protein Foods',
+      img:'../../../assets/images/protein foods.jpeg'
      
     },
     {
       name:'Dairy',
-     
-    },
-    {
-      name:'Fat',
-     
-    },
-    {
-      name:'Protein',
+      img:'../../../assets/images/dairy.jpeg'
+
      
     },
   ];

@@ -1,59 +1,90 @@
 <div class="container">
-  <a routerLink="/dashboard/categories" class="btn-link">Back</a>
-  <div class="text-center">
-    <h2>Sub-Categories</h2>
+  <div class="header">
+    <div class="row g-2">
+      <div class="col-5">
+        <h4 class="textcolor">
+          <a
+            routerLink="/dashboard/categories"
+            class="text-decoration-none links"
+            >CATEGORIES /</a
+          >
+          SUB-CATEGORIES
+        </h4>
+      </div>
+      <div class="col-3">
+        <button
+          type="button"
+          class="btn food-btn"
+          data-bs-toggle="modal"
+          data-bs-target="#addCate"
+        >
+          ADD SUB-CATEGORY
+        </button>
+      </div>
+      <div class="col-3 ms-auto">
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn food-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+      </div>
+    </div>
   </div>
-  
-  <div class="text-start"> <h5>Category : Dairy</h5></div>
-  <div class="text-end">
-    <button
-      type="button"
-      class="btn food-btn"
-      data-bs-toggle="modal"
-      data-bs-target="#addHeading"
+  <div class="tabledata">
+    <div class="row justify-content-start align-items-center">
+      <div class="col-1"><p class="textcolor">S.NO.</p></div>
+      <div class="col-2"><p class="textcolor">IMAGE</p></div>
+      <div class="col-3"><p class="textcolor">NAME</p></div>
+      <div class="col-3"><p class="textcolor">PRODUCTS</p></div>
+      <div class="col-3"><p class="textcolor">ACTION</p></div>
+    </div>
+    <div class="row justify-content-start align-items-center" *ngFor="let item of pageSlice; let i = index">
+      <div class="col-1">
+        <span>{{ i + 1 }}</span>
+      </div>
+      <div class="col-2">
+       
+        <img [src]="item.img" class="images" alt="">
+    
+      </div>
+      <div class="col-3">
+        <span>{{ item.name }}</span>
+      </div>
+      <div class="col-3">
+      
+          <a class="links" routerLink="/dashboard/product"> View</a>
+       
+      </div>
+      <div class="col-3">
+        <!-- <button mat-raised-button (click)="openDialog('0ms', '0ms')">Open dialog</button> -->
+        <a class="links" >Delete</a>/
+        <a
+        class="links"
+         
+          data-bs-toggle="modal"
+          data-bs-target="#addSubject"
+          >Edit</a
+        >
+      </div>
+    </div>
+    <mat-paginator
+      (page)="handlePageEvent($event)"
+      [length]="headingData.length"
+      [pageSize]="pageSize"
+      [showFirstLastButtons]="showFirstLastButtons"
+      [pageSizeOptions]="pageSizeOptions"
+      [pageIndex]="pageIndex"
+      aria-label="Select page"
     >
-      Add Sub-Category
-    </button>
+    </mat-paginator>
   </div>
-  <div class="row border-bottom">
-    <div class="col-1"><h3>S.NO.</h3></div>
-    <div class="col-3"><h3>Name</h3></div>
-    <div class="col-3"><h3>Products</h3></div>
-    <div class="col-5"><h3>Action</h3></div>
-  </div>
-  <div class="row border-bottom" *ngFor="let item of pageSlice; let i = index">
-    <div class="col-1">
-      <h5>{{ i + 1 }}</h5>
-    </div>
-    <div class="col-3">
-      <Strong> {{ item.name }}</Strong>
-    </div>
-    <div class="col-3">
-      <p>
-        <a class="btn-link btn" routerLink="/dashboard/product"> View</a>
-      </p>
-    </div>
-    <div class="col-5">
-      <!-- <button mat-raised-button (click)="openDialog('0ms', '0ms')">Open dialog</button> -->
-      <a class="btn-link btn" (click)="deleteHeading(item._id)" >Delete</a>/
-      <a
-        class="btn-link btn"
-        data-bs-toggle="modal"
-        data-bs-target="#editHeading" (click)="editHeading(i,item._id)"
-        >Edit</a
-      >
-    </div>
-  </div>
-  <mat-paginator
-    (page)="handlePageEvent($event)"
-    [length]="headingData.length"
-    [pageSize]="pageSize"
-    [showFirstLastButtons]="showFirstLastButtons"
-    [pageSizeOptions]="pageSizeOptions"
-    [pageIndex]="pageIndex"
-    aria-label="Select page"
-  >
-  </mat-paginator>
+
 </div>
 <!--add Heading Modal -->
 <div
@@ -66,7 +97,9 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Sub-Category</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          Add Sub-Category
+        </h1>
         <button
           type="button"
           class="btn-close"
@@ -86,15 +119,8 @@
               formControlName="name"
             />
           </div>
-         
-         
-    
-          <button
-            type="submit"
-            data-bs-dismiss="modal"
-          
-            class="btn btn-primary"
-          >
+
+          <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">
             Add
           </button>
         </form>
@@ -118,7 +144,9 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Sub-Category</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          Edit Sub-Category
+        </h1>
         <button
           type="button"
           class="btn-close"
@@ -138,13 +166,8 @@
               formControlName="name"
             />
           </div>
-          
 
-          <button
-            type="submit"
-            data-bs-dismiss="modal"
-            class="btn btn-primary"
-          >
+          <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">
             Update
           </button>
         </form>

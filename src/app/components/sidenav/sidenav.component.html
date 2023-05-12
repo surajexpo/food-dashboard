@@ -1,14 +1,14 @@
 <mat-nav-list>
   <div class="logo ">
     <!-- <img src="./assets/images/logo.svg" alt="I-Exam" /> -->
-    <span class="text-white">Food Delevery</span>
+    <span class="text-white">Green Deliveries</span>
   </div>
   <mat-divider></mat-divider>
   <h2 matSubheader class="mt-2">APPLICATIONS</h2>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard">
-    <mat-icon class="ms-2">home</mat-icon> Deshboard
+  <a mat-list-item [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard">
+    <mat-icon class="ms-2">home</mat-icon> Dashboard
   </a>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard/categories"><mat-icon class="ms-2">arrow_right_alt  </mat-icon>Food Categories</a>
+  <a mat-list-item [routerLinkActive]="'active'" routerLink="/dashboard/categories"><mat-icon class="ms-2">arrow_right_alt  </mat-icon>Food Categories</a>
   <!-- <mat-accordion>
     <mat-expansion-panel
       (opened)="panelOpenState = true"
@@ -23,8 +23,8 @@
       <a mat-list-item> <mat-icon> chevron_right </mat-icon>Pending Orders</a>
     </mat-expansion-panel>
   </mat-accordion>  -->
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard/coupon"><mat-icon class="ms-2">arrow_right_alt  </mat-icon>Coupons</a>
-  <a mat-list-item routerLinkActive="list-item-active"><mat-icon class="ms-2">arrow_right_alt  </mat-icon>Orders</a>
-  <a mat-list-item routerLinkActive="list-item-active"><mat-icon class="ms-2">arrow_right_alt  </mat-icon>Customer List</a>
-  <a mat-list-item routerLinkActive="list-item-active"><mat-icon class="ms-2">arrow_right_alt  </mat-icon>Vendor List</a>
+  <a mat-list-item [routerLinkActive]="'active'" routerLink="/dashboard/coupon"><mat-icon class="ms-2">arrow_right_alt  </mat-icon>Coupons</a>
+  <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard/order"><mat-icon class="ms-2">arrow_right_alt  </mat-icon>Orders</a> -->
+  <a mat-list-item [routerLinkActive]="'active'" routerLink="/dashboard/vender-list"><mat-icon class="ms-2">arrow_right_alt  </mat-icon>Vendor List</a>
+  <a mat-list-item [routerLinkActive]="'active'" routerLink="/dashboard/customer-list"><mat-icon class="ms-2">arrow_right_alt  </mat-icon>Customer List</a>
 </mat-nav-list>

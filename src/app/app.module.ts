@@ -31,6 +31,10 @@ import { AlertComponent } from './shared/alert/alert.component';
 import { ProductComponent } from './components/categories/sub-cate/product/product.component';
 import { NgChartsModule } from 'ng2-charts';
 import { CouponComponent } from './components/coupon/coupon.component';
+import { OrderComponent } from './components/order/order.component';
+import { CustomerListComponent } from './components/customer-list/customer-list.component';
+import { VenderListComponent } from './components/vender-list/vender-list.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -46,9 +50,13 @@ import { CouponComponent } from './components/coupon/coupon.component';
     AlertComponent,
     ProductComponent,
     CouponComponent,
+    OrderComponent,
+    CustomerListComponent,
+    VenderListComponent,
   ],
   imports: [
     HttpClientModule,
+    MatSlideToggleModule,
     BrowserModule,
     AppRoutingModule, 
     BrowserAnimationsModule,

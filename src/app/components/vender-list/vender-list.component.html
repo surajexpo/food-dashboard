@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="header">
+    <div class="row g-2">
+      <div class="col-3">
+        <h4 class="textcolor">VENDER LIST</h4>
+      </div>
+      <div class="col-3 ms-auto">
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn food-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabledata">
+    <div class="row justify-content-start align-items-center border-bottom">
+      <div class="col-1"><p class="textcolor">S.NO.</p></div>
+      <div class="col"><p class="textcolor">NAME</p></div>
+      <div class="col"><p class="textcolor">PHONE</p></div>
+      <div class="col"><p class="textcolor">ADDRESS</p></div>
+      <div class="col"><p class="textcolor">ACTION</p></div>
+    </div>
+    <div class="row justify-content-start align-items-center" *ngFor="let item of pageSlice; let i = index">
+      <div class="col-1">
+        <span>{{item.position }}</span>
+      </div>
+      <div class="col">
+       
+       <span>{{item.name}}</span>
+    
+      </div>
+      <div class="col">
+        <span>{{ item.phone }}</span>
+      </div>
+      <div class="col">
+        <span>{{ item.address }}</span>
+       
+      </div>
+    
+      <div class="col">
+        <!-- <button mat-raised-button (click)="openDialog('0ms', '0ms')">Open dialog</button> -->
+       
+        <mat-slide-toggle>Restricted
+        </mat-slide-toggle>
+
+      </div>
+    </div>
+    <mat-paginator
+      (page)="handlePageEvent($event)"
+      [length]="venderData.length"
+      [pageSize]="pageSize"
+      [showFirstLastButtons]="showFirstLastButtons"
+      [pageSizeOptions]="pageSizeOptions"
+      [pageIndex]="pageIndex"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </div>
+  </div>
+  
+  

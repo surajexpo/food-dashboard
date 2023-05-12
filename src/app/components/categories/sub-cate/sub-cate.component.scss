@@ -1,7 +1,37 @@
 table {
-    width: 100%;
-  }
-  .food-btn{
-    background-color:#1B4418 ;
-    color: #fff;
-  }
+  width: 100%;
+}
+.food-btn {
+  background-color: #1b4418;
+  color: #fff;
+}
+button {
+  margin-right: 8px;
+}
+.food-btn {
+  background-color: #1b4418;
+  color: #fff;
+}
+.textcolor {
+  color: #1b4418;
+}
+.header {
+  margin: 1rem 0;
+}
+.tabledata {
+  background-color: #fff;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 20px;
+}
+.images {
+  width: 4rem;
+  height: 4rem;
+  margin: 0.5rem 0;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+.links {
+  color: #1b4418;
+}
